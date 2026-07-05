@@ -19,7 +19,6 @@ export class GetMealMetricsUseCase {
   async execute({ userId }: GetMealMetricsRequest): Promise<GetMealMetricsResponse> {
     const meals = await this.mealRepository.findManyByUserId(userId);
 
-    // Ordena as refeições cronologicamente de forma crescente (mais antiga para mais recente)
     const sortedMeals = meals.sort((a, b) => a.dateTime.getTime() - b.dateTime.getTime());
 
     let totalMealsOnDiet = 0;
@@ -38,7 +37,6 @@ export class GetMealMetricsUseCase {
       }
     }
 
-    // Validação final caso o streak recorde termine no último elemento da lista
     bestOnDietStreak = Math.max(bestOnDietStreak, currentStreak);
 
     return {

@@ -1,14 +1,14 @@
 import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
 
 export class CreateUserBody {
-  @IsNotEmpty()
+  @IsNotEmpty({ message: 'O nome é obrigatório.' })
   name: string;
 
-  @IsEmail()
-  @IsNotEmpty()
+  @IsEmail({}, { message: 'O e-mail deve ser um endereço de e-mail válido.' })
+  @IsNotEmpty({ message: 'O e-mail é obrigatório.' })
   email: string;
 
-  @IsNotEmpty()
-  @MinLength(6)
+  @IsNotEmpty({ message: 'A senha é obrigatória.' })
+  @MinLength(6, { message: 'A senha deve ter no mínimo 6 caracteres.' })
   password: string;
 }

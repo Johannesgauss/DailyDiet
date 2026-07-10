@@ -5,7 +5,7 @@ interface GetMealMetricsRequest {
   userId: string;
 }
 
-interface GetMealMetricsResponse {
+export interface GetMealMetricsResponse {
   totalMeals: number;
   totalMealsOnDiet: number;
   totalMealsOffDiet: number;

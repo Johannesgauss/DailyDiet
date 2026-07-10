@@ -2,7 +2,7 @@ import { Controller, HttpCode, HttpStatus, Post, Request, UseGuards } from '@nes
 import { SignInUseCase } from 'src/modules/auth/useCases/signInUsecase/signInUseCase';
 import { LocalAuthGuard } from './guards/localAuth.guard';
 import { Public } from './decorators/isPublic';
-import { AuthRequestModel } from './models/authRequestModel';
+import type { AuthRequestModel } from './models/authRequestModel';
 
 @Controller()
 export class AuthController {

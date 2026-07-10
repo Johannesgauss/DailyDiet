@@ -15,7 +15,7 @@ import { SignInDTOValidateMiddleware } from './middleware/signInDTOValidate.midd
     UserModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
-      signOptions: { expiresIn: process.env.JWT_EXPIRE || '1d' },
+      signOptions: { expiresIn: (process.env.JWT_EXPIRE || '1d') as any },
     }),
   ],
   controllers: [AuthController],

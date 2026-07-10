@@ -4,8 +4,8 @@ import { EditMealUseCase } from 'src/modules/meal/useCases/editMealUseCase/editM
 import { DeleteMealUseCase } from 'src/modules/meal/useCases/deleteMealUseCase/deleteMealUseCase';
 import { GetMealUseCase } from 'src/modules/meal/useCases/getMealUseCase/getMealUseCase';
 import { GetManyMealsUseCase } from 'src/modules/meal/useCases/getManyMealsUseCase/getManyMealsUseCase';
-import { GetMealMetricsUseCase } from 'src/modules/meal/useCases/getMealMetricsUseCase/getMealMetricsUseCase';
-import { AuthenticatedRequestModel } from 'src/infra/http/modules/auth/models/authenticatedRequestModel';
+import { GetMealMetricsUseCase, GetMealMetricsResponse } from 'src/modules/meal/useCases/getMealMetricsUseCase/getMealMetricsUseCase';
+import type { AuthenticatedRequestModel } from 'src/infra/http/modules/auth/models/authenticatedRequestModel';
 import { CreateMealBody } from './dtos/CreateMealBody';
 import { EditMealBody } from './dtos/EditMealBody';
 import { MealViewModel } from './viewModels/MealViewModel';
@@ -75,7 +75,7 @@ export class MealController {
   }
 
   @Get('metrics')
-  async getMetrics(@Request() request: AuthenticatedRequestModel) {
+  async getMetrics(@Request() request: AuthenticatedRequestModel): Promise<GetMealMetricsResponse> {
     const userId = request.user.id;
 
     return await this.getMealMetricsUseCase.execute({
